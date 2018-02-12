@@ -4,14 +4,12 @@
 # Global Variables
 # ----------------
 $answer = 0
+$run_calc = 1
 
 # Initial Inputs
 # ------
 puts "Hello, please enter your name!"
 $name = gets.chomp
-
-puts "Hi #{$name}, please select the calcuator you'd like to use: (1)Basic, (2)Advanced, (3)BMI or (4)Trip"
-$calcType = gets.to_i
 
 # Basic Calculator
 # ----------------
@@ -39,7 +37,7 @@ def basic_calculate
   end
 end
 
-# Advaned Calculator
+# Advanced Calculator
 # ----------------
 def advanced_calculate
   puts "Hi again #{$name}, this calcuator can perform square root or power fucntions"
@@ -59,23 +57,85 @@ def advanced_calculate
   else
     puts "Sorry #{$name}, you have entered an invalid input!"
   end
+end
+
+def bmi_calculate
+  puts "Hi #{$name}, would you like to use (1)Metric or (2)Imperial Units?"
+  choice = gets.to_i
+
+  if (choice == 1)
+    puts "Please enter your weight in KG"
+    kaygee = gets.to_i
+
+    puts "Please enter your height in Meters"
+    height = gets.to_f
+
+    $answer = kaygee/(height*height)
+
+  elsif (choice == 2)
+    puts "Please enter your weight in Pounds"
+    stone = gets.to_i
+
+    puts "Please enter your height in Inches"
+    height = gets.to_i
+
+    $answer = (stone/(height*height))*703
+  else
+    puts "Sorry #{$name}, you have entered an invalid input"
+  end
 
 end
 
+def again
+  puts "Would you like to use the calcuator again #{$name}? (1)Yes or (2)No"
+  choice = gets.to_i
+
+  if (choice == 1)
+    $run_calc = 1
+  elsif (choice == 2)
+    $run_calc = 0
+  else
+    puts "You have entered an incorrect input!"
+  end
+end
 
 # Call Different Calculator Functions
 # -----------------------
+while $run_calc == 1 do
 
-if ($calcType == 1)
-  basic_calculate
-  puts "The answer to this calculation is: #{$answer}"
-elsif ($calcType == 2)
-  advanced_calculate
-  puts "The answer to this calculation is: #{$answer}"
-elsif ($calcType == 3)
-  puts "This calculator has not yet been added"
-elsif ($calcType == 4)
-  puts "This calculator has not yet been added"
-else
-  puts "You have entered an invalid calculator type"
+  puts "Please select the calcuator you'd like to use: (1)Basic, (2)Advanced, (3)BMI or (4)Trip"
+  $calcType = gets.to_i
+
+  if ($calcType == 1)
+    basic_calculate
+    puts "The answer to this calculation is: #{$answer}"
+    again
+  elsif ($calcType == 2)
+    advanced_calculate
+    puts "The answer to this calculation is: #{$answer}"
+    again
+  elsif ($calcType == 3)
+    bmi_calculate
+    if ($answer < 18.5)
+      puts "Your BMI is #{$answer}"
+      puts "#{$name}, you really need to eat more!"
+    elsif ($answer < 25)
+      puts "Your BMI is #{$answer}"
+      puts "Well done #{$name} you are a healthy weight!"
+    elsif ($answer < 30)
+      puts "Your BMI is #{$answer}"
+      puts "You're slightly overweight #{$name}, you should hit the gym!"
+    else
+      puts "Your BMI is #{$answer}"
+      puts "You are obese and need to get serious #{$name}!"
+    end
+    again
+  elsif ($calcType == 4)
+    puts "This calculator has not yet been added"
+    again
+  else
+    puts "You have entered an invalid calculator type"
+    again
+  end
+
 end
