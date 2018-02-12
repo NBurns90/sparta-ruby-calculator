@@ -68,20 +68,22 @@ def bmi_calculate
     kaygee = gets.to_i
 
     puts "Please enter your height in Meters"
-    height = gets.to_f
+    meters = gets.to_f
 
     $answer = kaygee/(height*height)
 
   elsif (choice == 2)
     puts "Please enter your weight in Pounds"
-    stone = gets.to_i
+    stone = gets.to_f
 
     puts "Please enter your height in Inches"
-    height = gets.to_i
+    inches = gets.to_f
 
-    $answer = (stone/(height*height))*703
+    $answer = stone/(inches*inches)*703
+
   else
     puts "Sorry #{$name}, you have entered an invalid input"
+    again
   end
 
 end
@@ -97,6 +99,7 @@ def again
     puts "Goodbye #{$name}!"
   else
     puts "You have entered an incorrect input!"
+    again
   end
 end
 
