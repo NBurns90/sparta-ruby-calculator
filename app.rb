@@ -59,6 +59,8 @@ def advanced_calculate
   end
 end
 
+# BMI calcuator
+# -------------
 def bmi_calculate
   puts "Hi #{$name}, would you like to use (1)Metric or (2)Imperial Units?"
   choice = gets.to_i
@@ -88,6 +90,8 @@ def bmi_calculate
 
 end
 
+# Function to restart calcuator
+# -----------------------------
 def again
   puts "Would you like to use the calcuator again #{$name}? (1)Yes or (2)No"
   choice = gets.to_i
@@ -103,7 +107,7 @@ def again
   end
 end
 
-# Call Different Calculator Functions
+# Call Different Calculator Functions and break through user input
 # -----------------------
 while $run_calc == 1 do
 
