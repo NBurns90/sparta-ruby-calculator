@@ -40,7 +40,7 @@ end
 # Advanced Calculator
 # ----------------
 def advanced_calculate
-  puts "Hi again #{$name}, this calcuator can perform square root or power fucntions"
+  puts "Hi again #{$name}, this calcuator can perform square root or power functions"
   puts "Which would you like to do? (1)Square Root or (2)Power"
   sqrtorpwr = gets.to_i
 
@@ -94,6 +94,7 @@ def again
     $run_calc = 1
   elsif (choice == 2)
     $run_calc = 0
+    puts "Goodbye #{$name}!"
   else
     puts "You have entered an incorrect input!"
   end
